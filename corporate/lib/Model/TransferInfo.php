@@ -225,7 +225,7 @@ class TransferInfo implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['transfer_amount'] = isset($data['transfer_amount']) ? $data['transfer_amount'] : null;
         $this->container['edi_info'] = isset($data['edi_info']) ? $data['edi_info'] : null;

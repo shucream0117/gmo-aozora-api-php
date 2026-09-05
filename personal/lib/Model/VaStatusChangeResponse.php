@@ -175,7 +175,7 @@ class VaStatusChangeResponse implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['v_accounts'] = isset($data['v_accounts']) ? $data['v_accounts'] : null;
     }

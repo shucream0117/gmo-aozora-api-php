@@ -200,7 +200,7 @@ class TransferApplyDetail implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['apply_datetime'] = isset($data['apply_datetime']) ? $data['apply_datetime'] : null;
         $this->container['apply_status'] = isset($data['apply_status']) ? $data['apply_status'] : null;

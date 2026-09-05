@@ -190,7 +190,7 @@ class UnableDetailInfo implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['transfer_detail_status'] = isset($data['transfer_detail_status']) ? $data['transfer_detail_status'] : null;
         $this->container['refund_status'] = isset($data['refund_status']) ? $data['refund_status'] : null;

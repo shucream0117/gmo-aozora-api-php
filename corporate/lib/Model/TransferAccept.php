@@ -180,7 +180,7 @@ class TransferAccept implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['accept_no'] = isset($data['accept_no']) ? $data['accept_no'] : null;
         $this->container['accept_datetime'] = isset($data['accept_datetime']) ? $data['accept_datetime'] : null;

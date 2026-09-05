@@ -180,7 +180,7 @@ class TransferApply implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['apply_no'] = isset($data['apply_no']) ? $data['apply_no'] : null;
         $this->container['transfer_apply_details'] = isset($data['transfer_apply_details']) ? $data['transfer_apply_details'] : null;

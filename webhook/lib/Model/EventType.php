@@ -175,7 +175,7 @@ class EventType implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['event_type'] = isset($data['event_type']) ? $data['event_type'] : null;
     }

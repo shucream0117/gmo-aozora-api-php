@@ -240,7 +240,7 @@ class BulkTransfer implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['item_id'] = isset($data['item_id']) ? $data['item_id'] : null;
         $this->container['beneficiary_bank_code'] = isset($data['beneficiary_bank_code']) ? $data['beneficiary_bank_code'] : null;

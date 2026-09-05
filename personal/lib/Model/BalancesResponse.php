@@ -180,7 +180,7 @@ class BalancesResponse implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['balances'] = isset($data['balances']) ? $data['balances'] : null;
         $this->container['sp_account_balances'] = isset($data['sp_account_balances']) ? $data['sp_account_balances'] : null;

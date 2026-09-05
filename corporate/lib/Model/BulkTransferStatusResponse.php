@@ -215,7 +215,7 @@ class BulkTransferStatusResponse implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['acceptance_key_class'] = isset($data['acceptance_key_class']) ? $data['acceptance_key_class'] : null;
         $this->container['detail_info_necessity'] = isset($data['detail_info_necessity']) ? $data['detail_info_necessity'] : null;

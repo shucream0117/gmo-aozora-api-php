@@ -195,7 +195,7 @@ class TransferDetailResponse implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['beneficiary_bank_name_kanji'] = isset($data['beneficiary_bank_name_kanji']) ? $data['beneficiary_bank_name_kanji'] : null;
         $this->container['beneficiary_branch_name_kanji'] = isset($data['beneficiary_branch_name_kanji']) ? $data['beneficiary_branch_name_kanji'] : null;

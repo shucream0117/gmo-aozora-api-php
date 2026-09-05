@@ -190,7 +190,7 @@ class SpAccountTransferRequest implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['deposit_sp_account_id'] = isset($data['deposit_sp_account_id']) ? $data['deposit_sp_account_id'] : null;
         $this->container['debit_sp_account_id'] = isset($data['debit_sp_account_id']) ? $data['debit_sp_account_id'] : null;

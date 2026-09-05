@@ -215,7 +215,7 @@ class VisaTransaction implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['use_date'] = isset($data['use_date']) ? $data['use_date'] : null;
         $this->container['use_content'] = isset($data['use_content']) ? $data['use_content'] : null;

@@ -200,7 +200,7 @@ class TransferStatusResponse implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['acceptance_key_class'] = isset($data['acceptance_key_class']) ? $data['acceptance_key_class'] : null;
         $this->container['base_date'] = isset($data['base_date']) ? $data['base_date'] : null;
