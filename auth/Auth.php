@@ -58,7 +58,7 @@ class Auth
             } else {
                 throw new \Exception('token format error');
             }
-        } catch (GuzzleHttp\Exception\ClientException $e) {
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
             throw $e;
         }
     }
@@ -108,7 +108,7 @@ class Auth
             } else {
                 throw new \Exception('token format error');
             }
-        } catch (GuzzleHttp\Exception\ClientException $e) {
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
             throw $e;
         }
     }
@@ -137,7 +137,7 @@ class Auth
                 throw new \Exception('token format error');
             }
             return $token;
-        } catch (GuzzleHttp\Exception\ClientException $e) {
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
             throw $e;
         }
     }
@@ -145,11 +145,13 @@ class Auth
     public function isValidToken($idToken, $clientSecret, $nonceInstance)
     {
         try {
-            $decodedToken = \Firebase\JWT\JWT::decode($idToken, $clientSecret, array('HS256'));
-            if ($decodedToken['nonce'] === $nonceInstance) {
+            // firebase/php-jwt 6 系では鍵とアルゴリズムを Key で渡す
+            $decodedToken = \Firebase\JWT\JWT::decode($idToken, new \Firebase\JWT\Key($clientSecret, 'HS256'));
+            // decode() が返すのは stdClass なので、配列としてではなくプロパティで参照する
+            if ($decodedToken->nonce === $nonceInstance) {
                 return true;
             }
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             //echo $e->getMessage()
         }
         return false;

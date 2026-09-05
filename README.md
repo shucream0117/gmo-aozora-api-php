@@ -14,7 +14,29 @@ https://api.gmo-aozora.com/ganb/developer/
 1.0.0
 
 ## Requirements
-PHP 5.5 and later
+PHP 7.4 and later
+
+## このフォークについて
+
+本家 [gmoaozora/gmo-aozora-api-php](https://github.com/gmoaozora/gmo-aozora-api-php) の fork です。
+本家が guzzle 6 系・firebase/php-jwt 5 系に固定しており、いずれも未修正のセキュリティ勧告を抱えたまま
+PHP 8 環境で利用できないため、依存を引き上げています。
+
+- guzzle を 7 系へ (`\GuzzleHttp\json_encode()` / `\GuzzleHttp\Psr7\build_query()` の置き換え)
+- firebase/php-jwt を 6 系以降へ
+- PHP 8.4 で deprecated になった暗黙 nullable 引数に `?` を付与
+- `require-dev` を削除 (テストは swagger 生成の空スタブで、PHPUnit 6 で削除された
+  `\PHPUnit_Framework_TestCase` を継承しており動作しないため)
+
+API の使い方は本家と同じです。
+
+### 開発
+
+`composer.lock` の更新には同梱の docker 環境を使います。
+
+```console
+$ docker compose run --rm composer composer update
+```
 
 ## Installation
 

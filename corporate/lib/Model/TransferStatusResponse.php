@@ -200,7 +200,7 @@ class TransferStatusResponse implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['acceptance_key_class'] = isset($data['acceptance_key_class']) ? $data['acceptance_key_class'] : null;
         $this->container['base_date'] = isset($data['base_date']) ? $data['base_date'] : null;
@@ -456,6 +456,7 @@ class TransferStatusResponse implements ModelInterface, ArrayAccess
      *
      * @return boolean
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return isset($this->container[$offset]);
@@ -468,6 +469,7 @@ class TransferStatusResponse implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
@@ -481,6 +483,7 @@ class TransferStatusResponse implements ModelInterface, ArrayAccess
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         if (is_null($offset)) {
@@ -497,6 +500,7 @@ class TransferStatusResponse implements ModelInterface, ArrayAccess
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         unset($this->container[$offset]);

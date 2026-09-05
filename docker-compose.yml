@@ -1,0 +1,13 @@
+# composer の実行用。ライブラリ本体はこのリポジトリを利用する側の環境で動く。
+#
+#   docker compose run --rm composer composer update
+#   docker compose run --rm composer composer validate
+#   docker compose run --rm composer php -l auth/Auth.php
+services:
+  composer:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    volumes:
+      - .:/app
+    working_dir: /app
