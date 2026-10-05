@@ -31,6 +31,7 @@ namespace Ganb\Personal\Client\Api;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ResponseException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -133,11 +134,12 @@ class AccountApi
             try {
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
+                $response = $e instanceof ResponseException ? $e->getResponse() : null;
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                    $response ? $response->getHeaders() : null,
+                    $response ? (string) $response->getBody() : null
                 );
             }
 
@@ -439,7 +441,7 @@ class AccountApi
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
             if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
+                $httpBody = json_encode($httpBody, JSON_THROW_ON_ERROR);
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -454,7 +456,7 @@ class AccountApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
 
             } else {
                 // for HTTP post (form)
@@ -521,11 +523,12 @@ class AccountApi
             try {
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
+                $response = $e instanceof ResponseException ? $e->getResponse() : null;
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                    $response ? $response->getHeaders() : null,
+                    $response ? (string) $response->getBody() : null
                 );
             }
 
@@ -793,7 +796,7 @@ class AccountApi
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
             if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
+                $httpBody = json_encode($httpBody, JSON_THROW_ON_ERROR);
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -808,7 +811,7 @@ class AccountApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
 
             } else {
                 // for HTTP post (form)
@@ -877,11 +880,12 @@ class AccountApi
             try {
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
+                $response = $e instanceof ResponseException ? $e->getResponse() : null;
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                    $response ? $response->getHeaders() : null,
+                    $response ? (string) $response->getBody() : null
                 );
             }
 
@@ -1156,7 +1160,7 @@ class AccountApi
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
             if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
+                $httpBody = json_encode($httpBody, JSON_THROW_ON_ERROR);
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1171,7 +1175,7 @@ class AccountApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
 
             } else {
                 // for HTTP post (form)
@@ -1246,11 +1250,12 @@ class AccountApi
             try {
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
+                $response = $e instanceof ResponseException ? $e->getResponse() : null;
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                    $response ? $response->getHeaders() : null,
+                    $response ? (string) $response->getBody() : null
                 );
             }
 
@@ -1552,7 +1557,7 @@ class AccountApi
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
             if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
+                $httpBody = json_encode($httpBody, JSON_THROW_ON_ERROR);
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1567,7 +1572,7 @@ class AccountApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
 
             } else {
                 // for HTTP post (form)
@@ -1661,11 +1666,12 @@ class AccountApi
             try {
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
+                $response = $e instanceof ResponseException ? $e->getResponse() : null;
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                    $response ? $response->getHeaders() : null,
+                    $response ? (string) $response->getBody() : null
                 );
             }
 
@@ -1967,7 +1973,7 @@ class AccountApi
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
             if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
+                $httpBody = json_encode($httpBody, JSON_THROW_ON_ERROR);
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1982,7 +1988,7 @@ class AccountApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
 
             } else {
                 // for HTTP post (form)
