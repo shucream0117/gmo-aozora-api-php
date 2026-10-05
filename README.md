@@ -22,7 +22,10 @@ PHP 7.4 and later
 本家が guzzle 6 系・firebase/php-jwt 5 系に固定しており、いずれも未修正のセキュリティ勧告を抱えたまま
 PHP 8 環境で利用できないため、依存を引き上げています。
 
-- guzzle を 7 系へ (`\GuzzleHttp\json_encode()` / `\GuzzleHttp\Psr7\build_query()` の置き換え)
+- guzzle を 8 系へ (7 系では動作しません)
+  - 関数形式の `\GuzzleHttp\json_encode()` / `\GuzzleHttp\Psr7\build_query()` を置き換え (7 系対応時)
+  - 8 系で削除された `\GuzzleHttp\Utils::jsonEncode()` を `json_encode()` に置き換え、
+    `RequestException::getResponse()` の代わりに `ResponseException` からレスポンスを取得
 - firebase/php-jwt を 6 系以降へ
 - PHP 8.4 で deprecated になった暗黙 nullable 引数に `?` を付与
 - `require-dev` を削除 (テストは swagger 生成の空スタブで、PHPUnit 6 で削除された
